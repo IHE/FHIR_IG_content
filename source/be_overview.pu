@@ -2,6 +2,81 @@
 
 skinparam linetype polyline
 
+package "Functional Module" as Functional {
+  Object "**Use Case**" as UCase {
+  }
+
+  Object "**Interaction**" as Interaction {
+  }
+
+  Object "**Logical Model**" as LogicalModel {
+  }
+
+  object "**Functional Example**" as Example {
+
+  }
+
+}
+
+
+Object "**Glossary**\n**Term**" as BTerm {
+}
+
+
+UCase -right[hidden]-> Interaction
+Interaction -right[hidden]-> LogicalModel
+LogicalModel -right[hidden]-> Example
+LogicalModel -left[hidden]-> BTerm
+
+Functional -down[hidden]-> Tech
+
+
+UCase -right-> Interaction: Requires
+Interaction -right-> LogicalModel: Data
+LogicalModel -right-> Example: Example
+Functional -right- BTerm
+
+
+
+package "Terminology" as Term {
+  object "** Value Set **" as ValueSet {
+  }
+}
+
+
+
+package "Technical Module" as Tech {
+
+  object "**Transaction**" as Transaction {
+
+  }
+
+
+  object "**   Profile    **" as Profile {
+
+  }
+
+
+  object "**Example Instance**" as ExampleInstance {
+
+  }
+
+  object "**Example**\n**Scenario**" as ExampleScenario {
+
+  }
+}
+
+
+UCase -down- ExampleScenario
+Interaction -down- Transaction
+LogicalModel -down- Profile
+Example -down- ExampleInstance
+
+Profile -right[hidden]-> ExampleInstance: "    "
+
+
+/'
+
 Class Transaction {
 Transaction
 |_ **id**
@@ -106,7 +181,7 @@ Standard
 --
 }
 
-Class UseCase as "Use Case" {
+Class Use_Case as "Use Case" {
 Use case
 |_ **id**
 |_ actors 0..*
@@ -128,8 +203,11 @@ Use case
 }
 
 
+'/
 
-'Class "open questions" {}
+note as N1
+
+end note
 
 
 @enduml
