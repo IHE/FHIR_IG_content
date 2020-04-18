@@ -1,0 +1,124 @@
+@startuml
+
+Class Transaction {
+Transaction
+|_ **id**
+|_ standards
+|_ name
+|_ description
+|_ message
+  |_ initiator
+  |_ receiver
+  |_ name
+  |_ description
+  |_ trigger
+    |_ id
+    |_ name 
+    |_ description   
+    |_ overview   
+  |_ semantics
+    |_ description   
+    |_ overview   
+    |_ profile ?
+  |_ action
+    |_ name
+    |_ description   
+    |_ overview   
+  |_ result
+    |_ name
+    |_ description
+    |_ trigger
+      |_ id
+      |_ name 
+    |_ semantics
+      |_ description   
+      |_ overview   
+      |_ profile ?
+    |_ action
+      |_ name
+      |_ description   
+      |_ overview   
+--
+}
+
+Transaction -right-> Actor: "initiator"
+Transaction -right-> Actor: "responder"
+
+Class Actor {
+Actor
+|_ **id**
+|_ name
+|_ description
+|_ overview
+|_ supports_transaction  
+  |_ Role
+    |_ Type
+    |_ Description  
+  |_ Condition
+|_ Option
+  |_ Required
+--
+}
+Actor -right-> Option: "has option"
+
+
+Class Option {
+Option
+|_ **id**
+|_ transaction  
+|_ actor
+--
+}
+
+Transaction -down-> ExampleCase: "is used\n in example"
+
+ExampleCase -right-> Example: "contains"
+
+
+Class Example as "Example\nResource" {
+}
+
+Class ExampleCase as "Example\nScenario" {
+}
+
+Class Vocabulary as "Vocabulary" {
+}
+
+Class Standard as "Standard" {
+Standard
+|_ **id**
+|_ url
+|_ name
+|_ version 
+--
+}
+
+Class UseCase as "Use Case" {
+Use case
+|_ **id**
+|_ actors 0..*
+|_ transactions 0..*  
+|_ content 0..*
+|_ name
+|_ description 
+|_ overview 
+|_ step
+  |_ name
+  |_ description 
+  |_ overview
+  |_ step
+  |_ return
+    |_ name
+    |_ description 
+    |_ overview
+--
+}
+
+
+
+Class "open questions" {
+
+}
+
+
+@enduml
