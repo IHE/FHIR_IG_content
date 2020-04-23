@@ -1,22 +1,76 @@
 @startuml
 
 skinparam linetype polyline
+hide circle
 
 package "Functional Module" as Functional {
-  Object "**Use Case**" as UCase {
+  Class "**Use Case**" as UCase {
   }
 
-  Object "**Interaction**" as Interaction {
+  Class "**Service**" as Interaction {
   }
 
-  Object "**Logical Model**" as LogicalModel {
+
+  Class "**Logical Model**" as LogicalModel {
   }
 
-  object "**Functional Example**" as Example {
+  Class "**Functional Example**" as Example {
 
   }
 
 }
+
+  Class "**Actor**" as Actor {
+  /'  Actor
+  |_ **id**
+  |_ name
+  |_ description
+  |_ (content)
+  '/
+  --
+}
+
+/'
+Class Transaction {
+Transaction
+|_ **id**
+|_ name
+|_ description
+|_ message
+  |_ initiator
+  |_ receiver
+  |_ name
+  |_ description
+  |_ trigger
+    |_ id
+    |_ name 
+    |_ description   
+    |_ overview   
+  |_ semantics
+    |_ description   
+    |_ overview   
+    |_ profile ?
+  |_ action
+    |_ name
+    |_ description   
+    |_ overview   
+  |_ result
+    |_ name
+    |_ description
+    |_ trigger
+      |_ id
+      |_ name 
+    |_ semantics
+      |_ description   
+      |_ overview   
+    |_ action
+      |_ name
+      |_ description   
+      |_ overview   
+--
+}
+
+'/
 
 
 Object "**Glossary**\n**Term**" as BTerm {
@@ -26,15 +80,19 @@ Object "**Glossary**\n**Term**" as BTerm {
 UCase -right[hidden]-> Interaction
 Interaction -right[hidden]-> LogicalModel
 LogicalModel -right[hidden]-> Example
-LogicalModel -left[hidden]-> BTerm
+LogicalModel -right[hidden]-> BTerm
 
+BTerm -down[hidden]-> Actor
 Functional -down[hidden]-> Tech
 
 
-UCase -right-> Interaction: Requires
-Interaction -right-> LogicalModel: Data
-LogicalModel -right-> Example: Example
-Functional -right- BTerm
+'UCase -right-> Interaction: 'Requires
+'Interaction -right-> LogicalModel: 'Data
+'LogicalModel -right-> Example: 'Example
+UCase -right-> Interaction: ""
+Interaction -right-> LogicalModel: ""
+LogicalModel -right-> Example: ""
+Functional -right- BTerm: ""
 
 
 
@@ -206,7 +264,9 @@ Use case
 '/
 
 note as N1
-
+Open issues:
+* 
+* 
 end note
 
 
