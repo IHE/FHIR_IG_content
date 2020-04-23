@@ -13,7 +13,7 @@ package "Functional Module" as Functional {
 
   Class "**Logical Model**" as LogicalModel {
   --
-  (StructureDefinition)
+  StructureDefinition
   }
 
   Class "**Functional Example**" as Example {
@@ -30,7 +30,7 @@ package "Functional Module" as Functional {
   |_ (content)
   '/
   --
-  (CapabilityStatement?)
+  CapabilityStatement?
 }
 
 /'
@@ -94,10 +94,10 @@ Functional -down[hidden]-> Tech
 'UCase -right-> Interaction: 'Requires
 'Interaction -right-> LogicalModel: 'Data
 'LogicalModel -right-> Example: 'Example
-UCase -right-> Interaction: ""
-Interaction -right-> LogicalModel: ""
-LogicalModel -right-> Example: ""
-Functional -right- BTerm: ""
+'UCase -right-> Interaction: ""
+'Interaction -right-> LogicalModel: ""
+'LogicalModel -right-> Example: ""
+'Functional -right- BTerm: ""
 
 
 
@@ -137,10 +137,6 @@ package "Technical Module" as Tech {
 }
 
 
-UCase -down- ExampleScenario
-Interaction -down- Transaction
-LogicalModel -down- Profile
-Example -down- ExampleInstance
 
 Profile -right[hidden]-> ExampleInstance: "    "
 
