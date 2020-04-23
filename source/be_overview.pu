@@ -12,6 +12,8 @@ package "Functional Module" as Functional {
 
 
   Class "**Logical Model**" as LogicalModel {
+  --
+  (StructureDefinition)
   }
 
   Class "**Functional Example**" as Example {
@@ -28,6 +30,7 @@ package "Functional Module" as Functional {
   |_ (content)
   '/
   --
+  (CapabilityStatement?)
 }
 
 /'
@@ -73,7 +76,9 @@ Transaction
 '/
 
 
-Object "**Glossary**\n**Term**" as BTerm {
+Class "**Glossary Term**" as BTerm {
+  --
+  CodeSystem
 }
 
 
@@ -97,7 +102,10 @@ Functional -right- BTerm: ""
 
 
 package "Terminology" as Term {
-  object "** Value Set **" as ValueSet {
+  Class "** Value Set **" as ValueSet {
+    --
+    ValueSet
+    CodeSystem
   }
 }
 
@@ -105,22 +113,26 @@ package "Terminology" as Term {
 
 package "Technical Module" as Tech {
 
-  object "**Transaction**" as Transaction {
-
+  Class "**Transaction**" as Transaction {
+  --
+  PlanDefinition?
   }
 
 
-  object "**   Profile    **" as Profile {
-
+  Class "**   Profile    **" as Profile {
+  --
+  StructureDefinition
   }
 
 
-  object "**Example Instance**" as ExampleInstance {
-
+  Class "**Example Instance**" as ExampleInstance {
+  --
+  Resource
   }
 
-  object "**Example**\n**Scenario**" as ExampleScenario {
-
+  Class "**Example**\n**Scenario**" as ExampleScenario {
+  --
+  ExampleScenario
   }
 }
 
@@ -264,9 +276,7 @@ Use case
 '/
 
 note as N1
-Open issues:
-* 
-* 
+
 end note
 
 
